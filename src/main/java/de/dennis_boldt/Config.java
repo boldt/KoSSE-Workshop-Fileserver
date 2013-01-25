@@ -12,6 +12,8 @@ public class Config {
     public static final Integer PORT = 9999;
     public static final String JAXRS_RESOURCES = "de.dennis_boldt";
 
+    public static final String FILES_PATH = "FILES";
+
     public static String getBaseURL(Integer port) {
         if(port == null) {
             port = Config.PORT;
