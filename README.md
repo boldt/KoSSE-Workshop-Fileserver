@@ -35,3 +35,7 @@ Run Grizzly server on port 5000:
 
   * `curl -X GET curl -X GET http://localhost:5000/files`
 
+Returns:
+
+  * `[{"name":"test.txt","size":4,"path":"FILES/test.txt","type":"text/plain"}]`
+
