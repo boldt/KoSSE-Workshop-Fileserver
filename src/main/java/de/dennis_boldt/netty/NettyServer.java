@@ -10,8 +10,6 @@ import com.sun.jersey.api.container.ContainerFactory;
 
 import de.dennis_boldt.Config;
 
-
-
 public class NettyServer {
 
     public NettyServer(Integer port) {

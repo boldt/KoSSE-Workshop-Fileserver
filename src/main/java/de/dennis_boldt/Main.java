@@ -5,6 +5,7 @@ import de.dennis_boldt.netty.NettyServer;
 
 public class Main {
 
+	// TODO: use args4j
     public static void main(String[] args) {
         int port = 0;
 
