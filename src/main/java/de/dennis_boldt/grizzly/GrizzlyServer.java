@@ -34,7 +34,7 @@ public class GrizzlyServer {
 	// TODO: use args4j
     public static void main(String[] args) {
         if (args.length == 1) {
-        	Config.PORT = Integer.parseInt(args[1]);
+        	Config.PORT = Integer.parseInt(args[0]);
         }
         new GrizzlyServer();
     }
