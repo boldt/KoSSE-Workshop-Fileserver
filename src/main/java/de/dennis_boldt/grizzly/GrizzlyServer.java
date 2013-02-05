@@ -1,26 +1,26 @@
 package de.dennis_boldt.grizzly;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.net.URI;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
-import com.sun.jersey.api.container.grizzly2.GrizzlyWebContainerFactory;
+import com.sun.jersey.api.container.grizzly2.GrizzlyServerFactory;
 
 import de.dennis_boldt.Config;
 
+/**
+ *
+ * @author Dennis Boldt
+ *
+ */
 public class GrizzlyServer {
 
-    public GrizzlyServer(int port) {
-        final Map<String, String> init_params = new HashMap<String, String>();
-        init_params.put("com.sun.jersey.config.property.packages", Config.JAXRS_RESOURCES);
-        init_params.put("com.sun.jersey.api.json.POJOMappingFeature", "true");
-
+    public GrizzlyServer() {
         System.out.print("Starting Grizzly...");
         try {
-            String baseurl = Config.getBaseURL(port);
-            HttpServer server = GrizzlyWebContainerFactory.create(baseurl, init_params);
-            System.out.println("Grizzly server started: " + baseurl);
+            URI baseuri = Config.getBaseURI();
+            HttpServer server = GrizzlyServerFactory.createHttpServer(baseuri, Config.getResourceConfig(baseuri.toString()));
+            System.out.println("Grizzly server started: " + baseuri.toString());
             System.in.read();
             System.out.print("Stop server...");
             server.stop();
@@ -31,14 +31,11 @@ public class GrizzlyServer {
         }
     }
 
+	// TODO: use args4j
     public static void main(String[] args) {
-        Integer port;
-        if (args.length > 0) {
-            port = Integer.parseInt(args[0]);
-        } else {
-            port = Config.PORT;
+        if (args.length == 1) {
+        	Config.PORT = Integer.parseInt(args[1]);
         }
-
-        new GrizzlyServer(port);
+        new GrizzlyServer();
     }
 }
