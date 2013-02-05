@@ -15,11 +15,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.devsprint.jersey.api</groupId>
-			<artifactId>jersey-netty-container</artifactId>
-			<version>0.0.7-boldt-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
 			<version>1.17</version>

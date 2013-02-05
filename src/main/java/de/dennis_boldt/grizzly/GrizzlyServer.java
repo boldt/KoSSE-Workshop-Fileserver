@@ -8,12 +8,17 @@ import com.sun.jersey.api.container.grizzly2.GrizzlyServerFactory;
 
 import de.dennis_boldt.Config;
 
+/**
+ *
+ * @author Dennis Boldt
+ *
+ */
 public class GrizzlyServer {
 
-    public GrizzlyServer(int port) {
+    public GrizzlyServer() {
         System.out.print("Starting Grizzly...");
         try {
-            URI baseuri = Config.getBaseURI(port);
+            URI baseuri = Config.getBaseURI();
             HttpServer server = GrizzlyServerFactory.createHttpServer(baseuri, Config.getResourceConfig(baseuri.toString()));
             System.out.println("Grizzly server started: " + baseuri.toString());
             System.in.read();
@@ -26,14 +31,11 @@ public class GrizzlyServer {
         }
     }
 
+	// TODO: use args4j
     public static void main(String[] args) {
-        Integer port;
-        if (args.length > 0) {
-            port = Integer.parseInt(args[0]);
-        } else {
-            port = Config.PORT;
+        if (args.length == 1) {
+        	Config.PORT = Integer.parseInt(args[1]);
         }
-
-        new GrizzlyServer(port);
+        new GrizzlyServer();
     }
 }
